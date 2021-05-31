@@ -55,4 +55,13 @@ public class PostServices {
 
         return  posts;
     }
+
+    public List<Post> getAllPostsByCategory(String categoryId) throws BadRequest {
+        List<Post> posts = postRepository.findAllByCategoryId(categoryId);
+
+        if (posts.isEmpty())
+            throw  new BadRequest("no posts found");
+
+        return  posts;
+    }
 }
