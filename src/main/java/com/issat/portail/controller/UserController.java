@@ -6,15 +6,18 @@ import com.issat.portail.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
     UserServices userServices;
 
     @PostMapping("")
-    public User create(@RequestBody User user){
+    public User create(@Valid @RequestBody User user){
         return userServices.create(user);
     }
     
@@ -22,4 +25,19 @@ public class UserController {
     public User getById(@PathVariable String id) throws BadRequest {
         return userServices.getUserById(id);
     }
+
+    @PostMapping("/{userId}/category/{categoryId}")
+    public User addCategory(@PathVariable String userId,@PathVariable String categoryId) throws BadRequest {
+        return userServices.addCategory(userId,categoryId);
+    }
+
+    @PostMapping("/{userId}/friend/{friendId}")
+    public User addFriend(@PathVariable String userId,@PathVariable String friendId) throws BadRequest {
+        return userServices.addFriend(userId,friendId);
+    }
+
+
+
+
+
 }
