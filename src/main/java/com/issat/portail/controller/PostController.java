@@ -27,8 +27,8 @@ public class PostController {
         return postServices.getAllPosts(id);
     }
 
-    @GetMapping("/{categoryId}")
-    public List<Post> getAllByCategoryId(@PathVariable String categoryId) throws BadRequest {
-        return postServices.getAllPostsByCategory(categoryId);
+    @GetMapping("/category/{id}")
+    public List<Post> getAllByCategoryId(@PathVariable String id) throws BadRequest {
+        return postServices.getAllPostsByCategory(id);
     }
 }
