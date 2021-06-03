@@ -29,7 +29,7 @@ public class UserController {
     public User getById(@PathVariable String id) throws BadRequest {
         return userServices.getUserById(id);
     }
-    @GetMapping("")
+    @GetMapping("/list")
     public List<User> getAllUsers() {
         return userServices.ListAllUsers();
     }
