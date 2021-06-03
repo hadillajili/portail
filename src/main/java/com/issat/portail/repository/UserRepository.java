@@ -1,6 +1,6 @@
 package com.issat.portail.repository;
 
-import com.issat.portail.entity.Post;
+
 import com.issat.portail.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
