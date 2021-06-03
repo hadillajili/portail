@@ -2,6 +2,7 @@ package com.issat.portail.controller;
 
 import com.issat.portail.entity.User;
 import com.issat.portail.exception.BadRequest;
+import com.issat.portail.repository.UserRepository;
 import com.issat.portail.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import java.util.List;
 public class UserController {
 
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     UserServices userServices;
 
     @PostMapping("")
@@ -27,8 +30,8 @@ public class UserController {
         return userServices.getUserById(id);
     }
     @GetMapping("/getAll/users")
-    public List<User> getAllUsers() throws BadRequest {
-        return userServices.getAllUsers();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
     @PostMapping("/{userId}/category/{categoryId}")
     public User addCategory(@PathVariable String userId,@PathVariable String categoryId) throws BadRequest {
