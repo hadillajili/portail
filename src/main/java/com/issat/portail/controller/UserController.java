@@ -26,7 +26,7 @@ public class UserController {
     public User getById(@PathVariable String id) throws BadRequest {
         return userServices.getUserById(id);
     }
-    @GetMapping("")
+    @GetMapping("/getAll/users")
     public List<User> getAllUsers() throws BadRequest {
         return userServices.getAllUsers();
     }
