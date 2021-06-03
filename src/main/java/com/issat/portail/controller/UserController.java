@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -25,7 +26,10 @@ public class UserController {
     public User getById(@PathVariable String id) throws BadRequest {
         return userServices.getUserById(id);
     }
-
+    @GetMapping("")
+    public List<User> getAllUsers() throws BadRequest {
+        return userServices.getAllUsers();
+    }
     @PostMapping("/{userId}/category/{categoryId}")
     public User addCategory(@PathVariable String userId,@PathVariable String categoryId) throws BadRequest {
         return userServices.addCategory(userId,categoryId);

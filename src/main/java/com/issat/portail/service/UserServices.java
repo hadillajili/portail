@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,14 @@ public class UserServices {
         return user;
     }
 
+    public List<User>  getAllUsers() throws BadRequest{
+        List<User> users = userRepository.findAll();
+
+        if (users.isEmpty())
+            throw  new BadRequest("no users found");
+
+        return  users;
+    }
 
     public User getUserById(String id) throws BadRequest {
        Optional<User> user = userRepository.findById(id);
