@@ -28,13 +28,8 @@ public class UserServices {
         return user;
     }
 
-    public List<User>  getAllUsers() throws BadRequest{
-        List<User> users = userRepository.findAll();
-
-        if (users.isEmpty())
-            throw  new BadRequest("no users found");
-
-        return  users;
+    public List<User>  ListAllUsers() {
+        return   userRepository.findAll();
     }
 
     public User getUserById(String id) throws BadRequest {

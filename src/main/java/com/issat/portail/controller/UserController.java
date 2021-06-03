@@ -31,7 +31,7 @@ public class UserController {
     }
     @GetMapping("")
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userServices.ListAllUsers();
     }
     @PostMapping("/{userId}/category/{categoryId}")
     public User addCategory(@PathVariable String userId,@PathVariable String categoryId) throws BadRequest {
