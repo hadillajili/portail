@@ -29,7 +29,7 @@ public class UserController {
     public User getById(@PathVariable String id) throws BadRequest {
         return userServices.getUserById(id);
     }
-    @GetMapping("/list")
+    @GetMapping("")
     public List<User> getAllUsers() {
         return userServices.ListAllUsers();
     }
@@ -42,7 +42,10 @@ public class UserController {
     public User addFriend(@PathVariable String userId,@PathVariable String friendId) throws BadRequest {
         return userServices.addFriend(userId,friendId);
     }
-
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable String id){
+        userServices.deleteUser(id);
+    }
 
 
 
